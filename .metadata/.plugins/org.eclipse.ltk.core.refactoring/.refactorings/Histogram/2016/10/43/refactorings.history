@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Histogram/src/Histogram.c&apos; to &apos;Prog2.c&apos;" description="Rename resource &apos;Histogram.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Histogram.c" name="Prog2.c" stamp="1476938320433" updateReferences="true"/>
+</session>

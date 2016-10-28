@@ -1,0 +1,66 @@
+/*
+ ============================================================================
+ Name        : PrefixSums.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+// TODO add documentation
+
+
+int* calculatePrefix(int size, int *arr);
+void printPrefixSums(int size, int *arr);
+
+int main(void) {
+	printf("Let's calculate the prefix sum for an array of your choosing.\n");
+	printf("Choose an array size: ");
+	int size;
+	scanf("%d", &size);
+
+	int *arr;
+
+	for (int i=0; i<size; i++) {
+		printf("Provide a value for index %d of your array: ", i);
+		int num;
+		scanf("%d", &num);
+		arr[i] = num;
+	}
+
+	int* r = calculatePrefix(size, arr);
+
+	printPrefixSums(size, r);
+
+	return EXIT_SUCCESS;
+}
+
+
+// TODO add proper documentation
+int* calculatePrefix(int size, int *arr) {
+	// TODO calculations
+	int *ps;
+
+	for (int i=0; i<size; i++) {
+		int t=0;
+		for (int j=0; j<i; j++) {
+			t += arr[j];
+		}
+		ps[i] = t;
+	}
+
+	return ps;
+}
+
+// TODO add documentation
+void printPrefixSums(int size, int *arr) {
+	printf("Printing the prefix sums of your array");
+	for (int p=0; p<size; p++) {
+		printf("ps[%d] = %d \n", p, arr[p]);
+	}
+}

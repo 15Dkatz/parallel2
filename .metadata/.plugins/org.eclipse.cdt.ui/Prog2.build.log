@@ -1,0 +1,6 @@
+22:58:15 **** Incremental Build of configuration Release for project Prog2 ****
+make all 
+make: Nothing to be done for `all'.
+
+22:58:15 Build Finished (took 65ms)
+

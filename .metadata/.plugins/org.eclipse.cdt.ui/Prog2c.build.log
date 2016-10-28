@@ -1,0 +1,28 @@
+13:06:10 **** Build of configuration Debug for project Prog2c ****
+make all 
+Building file: ../src/Prog2c.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Prog2c.d" -MT"src/Prog2c.d" -o "src/Prog2c.o" "../src/Prog2c.c"
+../src/Prog2c.c:60:29: warning: incompatible pointer types passing 'int (void *)' to parameter of type 'void *(*)(void *)' [-Wincompatible-pointer-types]
+        pthread_create(&id1, NULL, calcHistogram, &args1);
+                                   ^~~~~~~~~~~~~
+/usr/include/pthread.h:313:11: note: passing argument to parameter here
+                void *(*)(void *), void * __restrict);
+                        ^
+../src/Prog2c.c:69:29: warning: incompatible pointer types passing 'int (void *)' to parameter of type 'void *(*)(void *)' [-Wincompatible-pointer-types]
+        pthread_create(&id2, NULL, calcHistogram, &args2);
+                                   ^~~~~~~~~~~~~
+/usr/include/pthread.h:313:11: note: passing argument to parameter here
+                void *(*)(void *), void * __restrict);
+                        ^
+2 warnings generated.
+Finished building: ../src/Prog2c.c
+ 
+Building target: Prog2c
+Invoking: MacOS X C Linker
+gcc  -o "Prog2c"  ./src/Prog2c.o   
+Finished building target: Prog2c
+ 
+
+13:06:10 Build Finished (took 495ms)
+

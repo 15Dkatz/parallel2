@@ -1,0 +1,15 @@
+11:59:17 **** Incremental Build of configuration Debug for project PrefixSums ****
+make all 
+Building file: ../src/PrefixSums.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PrefixSums.d" -MT"src/PrefixSums.d" -o "src/PrefixSums.o" "../src/PrefixSums.c"
+Finished building: ../src/PrefixSums.c
+ 
+Building target: PrefixSums
+Invoking: MacOS X C Linker
+gcc  -o "PrefixSums"  ./src/PrefixSums.o   
+Finished building target: PrefixSums
+ 
+
+11:59:18 Build Finished (took 980ms)
+

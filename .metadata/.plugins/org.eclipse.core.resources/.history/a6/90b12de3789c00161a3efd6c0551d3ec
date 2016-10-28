@@ -1,0 +1,24 @@
+/*
+ ============================================================================
+ Name        : PrefixSumsParallel.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <mpi.h>
+
+int main(void) {
+
+	MPI_Status status;
+
+	/* Start up MPI */
+//	MPI_Init(NULL, NULL);
+
+	return EXIT_SUCCESS;
+}

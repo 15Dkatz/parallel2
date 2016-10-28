@@ -1,0 +1,15 @@
+21:46:16 **** Incremental Build of configuration Release for project Proj2 ****
+make all 
+Building file: ../src/Prog2.c
+Invoking: GCC C Compiler
+gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Prog2.d" -MT"src/Prog2.d" -o "src/Prog2.o" "../src/Prog2.c"
+Finished building: ../src/Prog2.c
+ 
+Building target: Proj2
+Invoking: MacOS X C Linker
+gcc  -o "Proj2"  ./src/Prog2.o   
+Finished building target: Proj2
+ 
+
+21:46:17 Build Finished (took 699ms)
+
