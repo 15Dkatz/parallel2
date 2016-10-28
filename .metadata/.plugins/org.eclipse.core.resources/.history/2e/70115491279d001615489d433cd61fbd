@@ -1,7 +1,10 @@
 /*
  ============================================================================
- Name        : PrefixSumsParallel.c // PARALLEL
- Author      : David Katz
+ Name        : PrefixSumsParallel.c
+ Author      :
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
  ============================================================================
  */
 
@@ -11,23 +14,11 @@
 #include <mpi.h>
 
 
+// Personal Notes
+// Build: mpicc -g -Wall -o PrefixSumsParallel PrefixSumsParallel.c
+// Exec: mpiexec -n <number of processes> PrefixSumsParallel
 
-/*-------------------------------------------------------------------
- * PARALLEL VERSION
- * The program builds an array of values from 1 to the number of
- * processes in process 0.
- * It then uses the MPI Library to broadcast this array of values to
- * all processes. Each process then calculates the prefix value for
- * its portion of the initial array. It then sends that value back to
- * the first process which stores that prefix value by gathering it
- * into a second array. The final array of prefix values then prints.
- */
-
-/*-------------------------------------------------------------------
- * To run, locate the src directory and execute the following commands:
- * Build: mpicc -g -Wall -o PrefixSumsParallel PrefixSumsParallel.c
- * Exec: mpiexec -n <number of processes> PrefixSumsParallel
- */
+// TODO Add documentation
 
 int main(void) {
 	int master = 0;

@@ -1,7 +1,10 @@
 /*
  ============================================================================
- Name        : PrefixSums.c //SERIAL
- Author      : David Katz
+ Name        : PrefixSums.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
  ============================================================================
  */
 
@@ -64,13 +67,7 @@ int* calculatePrefix(int size, int *arr) {
 	return psums;
 }
 
-/*-------------------------------------------------------------------
- * Function:    printPrefixSums
- * Purpose:     print the values of an array of prefix sums
- * In args:    	int size: the size of the argued array
- * 				int *arr: the array of values to print the values of
- * Outputs:     No returned output
- */
+// TODO add documentation
 void printPrefixSums(int size, int *arr) {
 	printf("Printing the prefix sums of your array:\n");
 	for (int p=0; p<size; p++) {
