@@ -1,0 +1,84 @@
+/*
+ ============================================================================
+ Name        : PrefixSumsParallel.c
+ Author      :
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <mpi.h>
+
+
+// Personal Notes
+// Build: mpicc -g -Wall -o PrefixSumsParallel PrefixSumsParallel.c
+// Exec: mpiexec -n <number of processes> PrefixSumsParallel
+
+
+const int MAX_STRING = 100;
+
+
+int main(void) {
+	int master = 0;
+	int id;
+	int numprocs;
+	int i;
+	MPI_Status status;
+	int size;
+	// get the size of the array from the user
+	printf("What is the size of your array?");
+	scanf("%d", &size);
+
+	int array1[size];
+	int array2[size+1];
+
+	/*Initialize MPI*/
+	MPI_Init(NULL, NULL);
+
+	/*Get the rank of this process among all the processes*/
+	MPI_Comm_rank(MPI_COMM_WORLD, &id);
+
+	if (id==0) {
+		// initialize array1
+		for (int i=0; i<size; i++) {
+			printf("Provide a value for index %d of your array: ", i);
+			int num;
+			scanf("%d", &num);
+			array1[i] = num;
+		}
+	}
+
+	// Send array1 to all processes
+	MPI_Bcast(array1, size, MPI_INT, master, MPI_COMM_WORLD);
+
+
+	printf("Process ID:    %d\n", id);
+	for (int c=0; c<size; c++) {
+		printf("%d   ", array1[c]);
+	}
+	printf("\n");
+
+	MPI_Gather(%id, 1, MPI_INT, &array2[id], 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	if (id==master) {
+		printf("\n");
+		printf("The start array is\n");
+		for (int c=0; c<size; c++) {
+			printf("%d   ", array1[c]);
+		}
+		printf("\n\n");
+		printf("The final array is\n");
+		for (int c=0; c<size; c++) {
+			printf("&d   ", array2[c]);'
+		}
+	}
+
+
+	// Shutdown MPI
+	MPI_Finalize();
+	return EXIT_SUCCESS;
+}

@@ -1,19 +1,33 @@
-12:09:32 **** Incremental Build of configuration Debug for project PrefixSumsParallel ****
+00:22:34 **** Incremental Build of configuration Debug for project PrefixSumsParallel ****
 make all 
 Building file: ../src/PrefixSumsParallel.c
 Invoking: GCC C Compiler
 gcc -I/usr/local/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PrefixSumsParallel.d" -MT"src/PrefixSumsParallel.d" -o "src/PrefixSumsParallel.o" "../src/PrefixSumsParallel.c"
-../src/PrefixSumsParallel.c:18:13: warning: unused variable 'status' [-Wunused-variable]
-        MPI_Status status;
-                   ^
-1 warning generated.
 Finished building: ../src/PrefixSumsParallel.c
  
 Building target: PrefixSumsParallel
 Invoking: MacOS X C Linker
 gcc  -o "PrefixSumsParallel"  ./src/PrefixSumsParallel.o   
 Undefined symbols for architecture x86_64:
+  "_MPI_Bcast", referenced from:
+      _main in PrefixSumsParallel.o
+  "_MPI_Comm_rank", referenced from:
+      _main in PrefixSumsParallel.o
+  "_MPI_Comm_size", referenced from:
+      _main in PrefixSumsParallel.o
+  "_MPI_Finalize", referenced from:
+      _main in PrefixSumsParallel.o
+  "_MPI_Gather", referenced from:
+      _main in PrefixSumsParallel.o
   "_MPI_Init", referenced from:
+      _main in PrefixSumsParallel.o
+  "_MPI_Recv", referenced from:
+      _main in PrefixSumsParallel.o
+  "_MPI_Send", referenced from:
+      _main in PrefixSumsParallel.o
+  "_ompi_mpi_comm_world", referenced from:
+      _main in PrefixSumsParallel.o
+  "_ompi_mpi_int", referenced from:
       _main in PrefixSumsParallel.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)

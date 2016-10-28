@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : PrefixSumsParallel.c
- Author      : 
+ Author      :
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -18,33 +18,75 @@
 // Build: mpicc -g -Wall -o PrefixSumsParallel PrefixSumsParallel.c
 // Exec: mpiexec -n <number of processes> PrefixSumsParallel
 
-
-const int MAX_STRING = 100;
+// TODO Add documentation
 
 int main(void) {
-	char greeting[MAX_STRING];
-	int my_rank, p, q;
+	int master = 0;
+	int id;
+	int numprocs;
+	int i;
+	MPI_Status status;
 
-	/* Start up MPI */
+	/*Initialize MPI*/
 	MPI_Init(NULL, NULL);
 
-	/* Get the number of processes */
-	MPI_Comm_size(MPI_COMM_WORLD, &p);
+	/*Get the number of processes*/
+	MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
 
-	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+	/*Get the rank of this process among all the processes*/
+	MPI_Comm_rank(MPI_COMM_WORLD, &id);
 
-	if (my_rank == 0) {
-		printf("Greetings from process %d of %d\n", my_rank, p);
-		for (q=1; q<p; q++) {
-			MPI_Recv(greeting, MAX_STRING, MPI_CHAR, q, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-			printf("%s\n", greeting);
+
+	int array1[numprocs];
+	int array2[numprocs+1];
+
+	if (id==0) {
+		// initialize array1
+		for (i=0; i<numprocs; i++) {
+			array1[i] = i+1;
 		}
-	} else {
-		sprintf(greeting, "Greetings from process %d of %d", my_rank, p);
-		MPI_Send(greeting, strlen(greeting)+1, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
 	}
 
-	/* Shut down MPI */
+	// Send array1 to all processes
+	MPI_Bcast(array1, numprocs, MPI_INT, master, MPI_COMM_WORLD);
+
+	int prefix_sum=0;
+	// calculate the prefix sum
+	for (int c=0; c<=id; c++) {
+		prefix_sum += array1[c];
+	}
+	array2[id] = prefix_sum;
+
+	MPI_Gather(&id, 1, MPI_INT, &array2[id], 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	// For all the processes that are not 0 or the master
+	// send the prefix sum to the master and the master receives the sum
+	// and adds it to the array2
+	for (i=1; i<numprocs; i++) {
+		if (id!=master) {
+			MPI_Send(&prefix_sum, 1, MPI_INT, master, 1, MPI_COMM_WORLD);
+		} else {
+			array2[id] = prefix_sum;
+			MPI_Recv(&array2[i], 1, MPI_INT, i, 1, MPI_COMM_WORLD, &status);
+		}
+	}
+
+	if (id==master) {
+		printf("\n");
+		printf("The start array is\n");
+		for (int c=0; c<numprocs; c++) {
+			printf("%d   ", array1[c]);
+		}
+		printf("\n\n");
+		printf("The prefix sums array is\n");
+		for (int c=0; c<numprocs; c++) {
+			printf("%d   ", array2[c]);
+		}
+		printf("\n");
+	}
+
+
+	// Shutdown MPI
 	MPI_Finalize();
 	return EXIT_SUCCESS;
 }

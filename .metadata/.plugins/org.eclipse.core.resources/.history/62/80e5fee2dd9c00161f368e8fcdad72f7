@@ -1,0 +1,107 @@
+/*
+ ============================================================================
+ Name        : PrefixSumsParallel.c
+ Author      :
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <mpi.h>
+
+
+// Personal Notes
+// Build: mpicc -g -Wall -o PrefixSumsParallel PrefixSumsParallel.c
+// Exec: mpiexec -n <number of processes> PrefixSumsParallel
+
+int main(void) {
+	int master = 0;
+	int id;
+	int numprocs;
+	int i;
+	MPI_Status status;
+
+	/*Initialize MPI*/
+	MPI_Init(NULL, NULL);
+
+	/*Get the number of processes*/
+	MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
+
+	/*Get the rank of this process among all the processes*/
+	MPI_Comm_rank(MPI_COMM_WORLD, &id);
+
+
+
+	int array1[numprocs];
+	int array2[numprocs+1];
+
+	if (id==0) {
+		// initialize array1
+		for (i=0; i<numprocs; i++) {
+			array1[i] = i+1;
+		}
+	}
+
+	// Send array1 to all processes
+	MPI_Bcast(array1, numprocs, MPI_INT, master, MPI_COMM_WORLD);
+
+
+	printf("Process ID:    %d\n", id);
+	for (int c=0; c<numprocs; c++) {
+		printf("%d   ", array1[c]);
+	}
+	printf("\n");
+
+	MPI_Gather(&id, 1, MPI_INT, &array2[id], 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	if (id==master) {
+		printf("\n");
+		printf("The start array is\n");
+		for (int c=0; c<numprocs; c++) {
+			printf("%d   ", array1[c]);
+		}
+		printf("\n\n");
+		printf("The prefix sums array is\n");
+		for (int c=0; c<numprocs; c++) {
+			printf("%d   ", array2[c]);
+		}
+		printf("\n");
+	}
+
+	// CHANGE THIS LATER
+	// For all the processes that are not 0 or the master
+	// send their sum to the master and the master receives the sum
+	// and adds it to the array2
+	for (i=1; i<numprocs; i++) {
+		if (id!=master) {
+			MPI_Send(&id, 1+5, MPI_INT, master, 1, MPI_COMM_WORLD);
+		} else {
+			MPI_Recv(&array2[i], 1, MPI_INT, i, 1, MPI_COMM_WORLD, &status);
+		}
+	}
+
+	if (id==master) {
+		printf("\n");
+		printf("The start array is\n");
+		for (int c=0; c<numprocs; c++) {
+			printf("%d   ", array1[c]);
+		}
+		printf("\n\n");
+		printf("The prefix sums array is\n");
+		for (int c=0; c<numprocs; c++) {
+			printf("%d   ", array2[c]);
+		}
+		printf("\n");
+	}
+
+
+
+
+	// Shutdown MPI
+	MPI_Finalize();
+	return EXIT_SUCCESS;
+}

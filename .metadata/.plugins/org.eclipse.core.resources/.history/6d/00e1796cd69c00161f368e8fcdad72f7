@@ -1,0 +1,37 @@
+/*
+ ============================================================================
+ Name        : PrefixSumsParallel.c
+ Author      :
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <mpi.h>
+
+
+// Personal Notes
+// Build: mpicc -g -Wall -o PrefixSumsParallel PrefixSumsParallel.c
+// Exec: mpiexec -n <number of processes> PrefixSumsParallel
+
+
+const int MAX_STRING = 100;
+
+
+int main(void) {
+	int master = 0;
+	int id;
+	int numprocs;
+	int i;
+	MPI_Status status;
+	int size;
+	// get the size of the array from the user
+	printf("What is the size of your array?");
+	scanf("%d", &size);
+
+	return EXIT_SUCCESS;
+}
