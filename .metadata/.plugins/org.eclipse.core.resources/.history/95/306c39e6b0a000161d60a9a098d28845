@@ -1,0 +1,30 @@
+/*
+ ============================================================================
+ Name        : MatrixMult.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "mpi.h"
+
+/*-------------------------------------------------------------------
+ * To run, locate the src directory and execute the following commands:
+ * Build: mpicc -g -Wall -o MatrixMult MatrixMult.c
+ * Exec: mpiexec -n <number of processes> MatrixMult
+ */
+
+int main(int argc, char *argv[]) {
+	int rank, size, i, n;
+
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+
+
+	return EXIT_SUCCESS;
+}
