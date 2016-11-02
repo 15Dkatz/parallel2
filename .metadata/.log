@@ -4546,3 +4546,9 @@ Binding(COMMAND+SHIFT+H,
 
 !ENTRY org.eclipse.cdt.core 1 0 2016-11-01 23:18:38.481
 !MESSAGE Indexed 'HelloWorld' (1 sources, 57 headers) in 0.62 sec: 1,354 declarations; 1,835 references; 0 unresolved inclusions; 6 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-11-01 23:59:19.340
+!MESSAGE Indexed 'MPISendRecv' (1 sources, 57 headers) in 0.52 sec: 1,354 declarations; 1,835 references; 0 unresolved inclusions; 6 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-11-02 00:04:19.130
+!MESSAGE Indexed 'MPIPingPong' (1 sources, 57 headers) in 0.27 sec: 1,354 declarations; 1,835 references; 0 unresolved inclusions; 6 syntax errors; 0 unresolved names (0.00%)

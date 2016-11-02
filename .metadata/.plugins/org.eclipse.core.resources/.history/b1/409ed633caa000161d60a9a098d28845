@@ -1,0 +1,21 @@
+/*
+ ============================================================================
+ Name        : MPISendRecv.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <mpi.h>
+
+int main(void) {
+	int world_rank;
+	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+	int world_size;
+
+	return EXIT_SUCCESS;
+}

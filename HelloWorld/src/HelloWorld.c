@@ -24,7 +24,6 @@ int main(void) {
 
 	int world_size;
 	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-	world_size = 2;
 
 	int world_rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
@@ -34,8 +33,9 @@ int main(void) {
 	MPI_Get_processor_name(processor_name, &name_len);
 
 	printf("Hello world from processor %s, rank %d"
-			" out of %d processors\n",
+			" out of %d processes\n",
 			processor_name, world_rank, world_size);
 
 	MPI_Finalize();
+	return EXIT_SUCCESS;
 }

@@ -1,0 +1,34 @@
+/*
+ ============================================================================
+ Name        : MPIPingPong.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <mpi.h>
+
+int main(void) {
+	MPI_Init(NULL, NULL);
+
+//	int world_rank;
+//		MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+//		int world_size;
+//		MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+	int rank;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	int size;
+	MPI_Comm_size(MPI_COMM_WORLD, size);
+
+	// send one message from 0 to 1
+
+	// then send one message from 1 to 0
+
+	MPI_Finalize();
+	return EXIT_SUCCESS;
+}
