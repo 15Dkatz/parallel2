@@ -1,0 +1,30 @@
+/*
+ ============================================================================
+ Name        : MPIGather.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <mpi.h>
+
+int main(void) {
+	MPI_Init(NULL, NULL);
+	int size;
+	MPI_Comm_size(MPI_COMM_WORLD, &size);
+	int rank;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+	int* vector;
+
+	if (rank == 0) {
+		// build an array of elements
+
+	}
+
+	return EXIT_SUCCESS;
+}
