@@ -4813,3 +4813,22 @@ Binding(ALT+ARROW_LEFT,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.textEditorScope,,cocoa,system)
+!SESSION 2016-11-03 00:13:47.560 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.parallel.product -keyring /Users/davidkatz/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.parallel.product -keyring /Users/davidkatz/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.ui 4 4 2016-11-03 00:13:51.643
+!MESSAGE Conflicting handlers for org.eclipse.ptp.pldt.openshmem.command4: {org.eclipse.ptp.pldt.openshmem.actions.RunAnalyseOpenSHMEMcommandHandler} vs {org.eclipse.ptp.pldt.openshmem.actions.RunAnalyseOpenSHMEMcommandHandler}
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-03 00:13:52.443
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-11-03 00:15:10.433
+!MESSAGE Indexed 'MPIScatterReduce' (0 sources, 0 headers) in 0.00 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-11-03 00:15:36.946
+!MESSAGE Indexed 'MPIReduceScatter' (1 sources, 57 headers) in 1.09 sec: 1,354 declarations; 1,835 references; 0 unresolved inclusions; 6 syntax errors; 0 unresolved names (0.00%)

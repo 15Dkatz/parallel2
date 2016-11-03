@@ -24,8 +24,6 @@ int main(void) {
 
 	char *message = malloc(256);
 
-
-	// run this 1m times
 	int number;
 	if (rank == 0) {
 		strcpy(message, "ping");

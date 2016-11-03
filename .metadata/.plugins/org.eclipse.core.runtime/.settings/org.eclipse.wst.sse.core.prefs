@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-task-tag-projects-already-scanned=RemoteSystemsTempFiles,TestingThreads,ThreadConditions,Histogram,Prog2b,Prog2c,PrefixSums,Prog2d,PrefixSumsParallel,HelloWorld,MatrixMult
+task-tag-projects-already-scanned=RemoteSystemsTempFiles,TestingThreads,ThreadConditions,Histogram,Prog2b,Prog2c,PrefixSums,Prog2d,PrefixSumsParallel,HelloWorld,MatrixMult,MPIGather,MPIPingPong,MPIScatterReduce,MPISendRecv
