@@ -26,11 +26,10 @@
 /*-------------------------------------------------------------------
  * Running the program
  * 1) Locate the src folder with MPIPingPong.c
- * 2) execute `mpicc -o MPIPingPong MPIPingPong.c`
+ * 2) execute `mpicc -o MPIPingPong MPIPingPong.c 1
  * 		- builds an executable file for MPI to run
- * 3) execute `mpiexec -n 2 MPIPingPong`
- * 		- where 2 is the number of processes specified by the -n flag
- * 		- ** use 2 to ensure that only 2 processes are used! **
+ * 3) execute `mpiexec -n 3 MPIReduceScatter`
+ * 		- where 3 is the number of processes specified by the -n flag
  */
 int main(void) {
 	MPI_Init(NULL, NULL);
