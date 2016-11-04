@@ -24,9 +24,6 @@ int main(void) {
 
 	char *message = malloc(256);
 
-	// UNCOMMENT below code to keep track of the run time for the MPI processes
-	//	double starttime, endtime;
-	//	starttime = MPI_Wtime();
 
 	// run this 1m times
 	int number;
@@ -47,11 +44,6 @@ int main(void) {
 			printf("i: %d | Process 1 received a %s from process 0\n", i, message);
 		}
 	}
-
-	// UNCOMMENT below code to keep track of the run time for the MPI processes
-	//	endtime = MPI_Wtime();
-	//	printf("That took %f seconds\n", endtime-starttime);
-
 	MPI_Finalize();
 	return EXIT_SUCCESS;
 }
