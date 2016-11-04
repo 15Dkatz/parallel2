@@ -1,0 +1,71 @@
+/*
+ ============================================================================
+ Name        : MPIReduceScatter.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <mpi.h>
+
+
+// TODO add docs
+// including how to run the program
+// make sure to include the number specification
+
+int main(void) {
+	MPI_Init(NULL, NULL);
+	int rank;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	int size;
+	MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+	int sendarr[size];
+	int recvnum;
+
+	// for (int i=0; i<size; i++) sendarr[i] = 1 + rank + size*i;
+
+	FILE * fp;
+	fp = fopen("matrix.txt", "r");
+
+	for (int r=0; r<=rank; r++) {
+		fscanf(fp, "%d %d %d", &sendarr[0], &sendarr[1], &sendarr[2]);
+	}
+
+	if (rank==0) {
+		printf("Matrix: \n");
+	}
+	// print the beginning array
+	printf("| %d", sendarr[0]);
+	for (int p=1; p<size; p++) {
+		printf(" %d", sendarr[p]);
+	}
+	printf(" | in row %d \n", rank);
+
+	int recvarr[size];
+
+	// the last line of input is the 3x1 multiplication
+	int multarr[size];
+	// TODO read input from a separate file with fscanf
+	for (int i=0; i<size; i++) multarr[i] = i+1;
+
+//	for (int i=0; i<size-rank; i++) {
+//		fscanf(fp, "%d %d %d", &multarr[0], &multarr[1], &multarr[2]);
+//	}
+
+	fclose(fp);
+	// perform the matrix multiplication
+	for (int i=0; i<size; i++) sendarr[i] = sendarr[i] * multarr[i];
+	// sum the scattered multiplied values and reduce them into the first process
+	MPI_Reduce_scatter(sendarr, &recvnum, recvarr, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+
+	printf("Proc %d: %d\n", rank, recvnum);
+
+	MPI_Finalize();
+
+	return EXIT_SUCCESS;
+}
